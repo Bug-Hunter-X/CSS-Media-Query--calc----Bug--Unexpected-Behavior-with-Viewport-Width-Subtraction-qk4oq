@@ -1,0 +1,9 @@
+The following CSS code snippet demonstrates an uncommon issue that may arise from improper use of the `calc()` function within media queries:
+
+```css
+@media (max-width: calc(100vw - 100px)) {
+  /* styles here */
+}
+```
+
+The problem lies in trying to use `calc()` to dynamically calculate the maximum width based on the viewport width. While seemingly straightforward, the `calc()` function within media queries often doesn't behave as expected, especially when subtracting a fixed value from `vw` units.  Browsers may interpret this incorrectly or fail to parse the expression altogether. 
