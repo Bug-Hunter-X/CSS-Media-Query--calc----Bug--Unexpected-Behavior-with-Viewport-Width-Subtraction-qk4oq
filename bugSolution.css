@@ -1,0 +1,25 @@
+A more reliable approach to achieve the desired behavior is to use JavaScript to detect the viewport width and dynamically apply classes or styles.  This bypasses the limitations of `calc()` within media queries.
+
+Here's an example using JavaScript:
+
+```javascript
+function adjustStyles() {
+  const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  const maxWidth = vw - 100;
+  document.body.style.maxWidth = `${maxWidth}px`;
+  // Apply other styles as needed
+}
+
+window.addEventListener('resize', adjustStyles);
+window.addEventListener('load', adjustStyles);
+```
+
+Then, you can use CSS to target the dynamically added class:
+
+```css
+.dynamic-max-width {
+  max-width: 100%; /*Fallback for no JS*/
+}
+```
+
+This method directly calculates the maximum width using JavaScript and applies it accordingly, providing a more robust solution for dynamically adjusting styles based on viewport width.
